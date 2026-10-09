@@ -1,0 +1,10 @@
+[Unit]
+Description=Mission Control Watchdog (cek server + tunnel bore)
+After=network.target mission-control.service
+
+[Service]
+Type=oneshot
+ExecStart=/home/hatch/workspace/mission-control/watchdog.sh
+
+[Install]
+WantedBy=multi-user.target

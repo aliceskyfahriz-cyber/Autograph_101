@@ -1,0 +1,15 @@
+[Unit]
+Description=Mission Control Dashboard (AI Agent Ops)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/hatch/workspace/mission-control
+ExecStart=/usr/bin/node /home/hatch/workspace/mission-control/server.js
+Restart=always
+RestartSec=3
+StandardOutput=append:/home/hatch/workspace/mission-control/data/server.log
+StandardError=append:/home/hatch/workspace/mission-control/data/server.log
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,11 @@
+[Unit]
+Description=Jalankan Mission Control Watchdog tiap 5 menit
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=5min
+AccuracySec=30s
+Unit=mission-control-watchdog.service
+
+[Install]
+WantedBy=timers.target
