@@ -11,3 +11,5 @@ Workflow `.github/workflows/kontruang-pages.yml` merakitnya kembali
 
 Untuk memperbarui: bangun ulang dist dengan `VITE_BASE=/Autograph_101/`,
 zip isinya, ganti potongan base64-nya, lalu push — deploy berjalan otomatis.
+
+Terakhir diterbitkan ulang: 10 Okt 2026 ±18:15 WIB (setelah Pages diaktifkan: Source = GitHub Actions).
