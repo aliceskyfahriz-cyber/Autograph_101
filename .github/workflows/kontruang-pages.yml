@@ -1,0 +1,43 @@
+name: Deploy Kontruang PWA ke GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'kontruang-pwa/**'
+      - '.github/workflows/kontruang-pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Rakit situs dari paket base64
+        run: |
+          cat kontruang-pwa/site.zip.b64.part* | base64 -d > site.zip
+          mkdir -p _site
+          unzip -o site.zip -d _site
+          ls -la _site
+      - name: Siapkan GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Unggah artefak situs
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - name: Terbitkan ke GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
