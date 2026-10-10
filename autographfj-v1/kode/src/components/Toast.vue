@@ -1,0 +1,1 @@
+<script setup>defineProps({show:Boolean,message:String})</script><template><Transition name="toast"><div v-if="show" class="toast">✓ {{message}}</div></Transition></template>

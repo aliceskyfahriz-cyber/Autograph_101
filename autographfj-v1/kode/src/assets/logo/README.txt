@@ -1,0 +1,1 @@
+Logo demo tersedia sebagai autograph-fj.png.

@@ -1,0 +1,1 @@
+<script setup>defineProps({label:String,value:[String,Number],helper:String,icon:String,accent:Boolean})</script><template><div :class="['stat-card',{accent}]"><div class="stat-icon">{{icon}}</div><div><span>{{label}}</span><strong>{{value}}</strong><small>{{helper}}</small></div></div></template>
