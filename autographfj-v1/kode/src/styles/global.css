@@ -183,3 +183,13 @@ td b{color:#111827}
   .ring-wrap{margin:auto}
   .panel{padding:15px}
 }
+
+/* LOGIN PASSWORD + ADMIN (tambahan v2, tema tetap merah-putih) */
+.login-error{background:#fef2f2;border:1px solid #fecaca;color:#b91c1c;border-radius:8px;padding:10px 12px;font-size:12px;line-height:1.5}
+.login-accounts{margin-top:16px;background:var(--primary-soft);border:1px solid var(--primary-border);border-radius:9px;padding:11px 13px;display:grid;gap:4px;color:#374151;font-size:12px;line-height:1.5}
+.login-accounts b{color:var(--primary-dark)}
+.login-accounts code{background:#fff;border:1px solid var(--primary-border);border-radius:5px;padding:0 5px;font-size:11px}
+.login-accounts small{color:var(--muted)}
+.admin-banner{display:flex;justify-content:space-between;align-items:center;gap:14px;background:var(--primary-soft);border:1px solid var(--primary-border);color:var(--primary-dark);border-radius:10px;padding:12px 16px;margin-bottom:18px;line-height:1.55;flex-wrap:wrap}
+.admin-actions{white-space:nowrap}
+.admin-note{color:var(--muted);line-height:1.6;margin:14px 2px 2px;font-size:12px}

@@ -1,1 +1,1 @@
-Logo demo tersedia sebagai autograph-fj.png.
+Tempatkan logo proyek di sini.

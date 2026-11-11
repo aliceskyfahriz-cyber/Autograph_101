@@ -32,7 +32,7 @@ async function exportXLSX() {
   const ExcelJS = (await import('exceljs')).default
 
   const wb = new ExcelJS.Workbook()
-  wb.creator = 'AutoGraph FJ'
+  wb.creator = 'Technician Point Monitoring'
   wb.created = new Date()
 
   const RED = 'C00000'
@@ -83,20 +83,17 @@ async function exportXLSX() {
   // ---- Sheet 1: Rekap ----
   const ws1 = wb.addWorksheet('Rekap')
   ws1.columns = [
-    { width: 14 }, { width: 10 }, { width: 26 },
-    { width: 8 }, { width: 8 }, { width: 13 }
+    { width: 14 }, { width: 20 }, { width: 18 }, { width: 18 }, { width: 10 },
+    { width: 26 }, { width: 20 }, { width: 8 }, { width: 12 }, { width: 14 }
   ]
-  addTitle(ws1, 'Rekap AutoGraph FJ — Technician Point', 'Diekspor ' + today, 6)
-  styleHeader(ws1.addRow(['Tanggal', 'Kode', 'Pekerjaan', 'Qty', 'Poin', 'Total Poin']))
+  addTitle(ws1, 'Rekap — Technician Point Monitoring', 'Diekspor ' + today, 10)
+  styleHeader(ws1.addRow(['Tanggal', 'Nomor Tiket', 'Service ID', 'Segment', 'Kode', 'Pekerjaan', 'Partner', 'Qty', 'Poin Dasar', 'Poin Diterima']))
 
   props.jobs.forEach((job, i) => {
     const row = ws1.addRow([
-      job.date,
-      job.master?.code || '',
-      job.master?.name || '',
-      Number(job.qty),
-      Number(job.points),
-      Number(job.total)
+      job.date, job.ticketNumber || '', job.serviceId || '', job.segment || '',
+      job.master?.code || '', job.master?.name || '', job.partnerName || (job.partnerId ? 'Partner' : 'Mandiri'),
+      Number(job.qty), Number(job.points), Number(job.total)
     ])
     row.eachCell((cell, col) => {
       cell.border = border
@@ -106,7 +103,7 @@ async function exportXLSX() {
       if (col >= 4) cell.alignment = { horizontal: 'right' }
     })
   })
-  styleTotal(ws1.addRow(['TOTAL', '', '', sumQty, '', sumTotal]))
+  styleTotal(ws1.addRow(['TOTAL', '', '', '', '', '', '', sumQty, '', sumTotal]))
   ws1.views = [{ state: 'frozen', ySplit: 3 }]
 
   // ---- Sheet 2: Per Jenis Pekerjaan ----
@@ -158,7 +155,7 @@ async function exportXLSX() {
   const url = URL.createObjectURL(blob)
   const link = document.createElement('a')
   link.href = url
-  link.download = 'rekap-autograph-fj.xlsx'
+  link.download = 'rekap-technician-point.xlsx'
   document.body.appendChild(link)
   link.click()
   document.body.removeChild(link)
